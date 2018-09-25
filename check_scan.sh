@@ -8,8 +8,6 @@
 # Copyright (C) 2005 Mark Stingley
 # mark AT altsec.info
 #
-# 
-#
 # If you need help with your security or systems administration,
 # see http://www.altsec.info
 #
@@ -116,7 +114,8 @@ fi
 SCANTIME=`/bin/date +%Y%m%d-%H%M`
 
 # Kopernix: Add sort and remove whithe spaces whith awk
-/usr/bin/nmap -sT -P0 -p 1-65535 $IP | /bin/grep -w open | awk '{$1=$1;print}' | \
+
+/usr/bin/nmap -sT -P0 $IP | /bin/grep -w open | awk '{$1=$1;print}' | \
 /usr/bin/sort -n -k1 > $SCANDIR/$IP
 
 DIFF=`/usr/bin/comm -23 $SCANDIR/$IP $SCANDIR/$IP.base`
@@ -148,3 +147,5 @@ else
    exit 0
 
 fi
+
+
