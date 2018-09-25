@@ -116,7 +116,7 @@ fi
 SCANTIME=`/bin/date +%Y%m%d-%H%M`
 
 # Kopernix: Add sort and remove whithe spaces whith awk
-/usr/bin/nmap --max-retries 20 -sT -P0 -p 1-65535 $IP | /bin/grep -w open | awk '{$1=$1;print}' | \
+/usr/bin/nmap -sT -P0 -p 1-65535 $IP | /bin/grep -w open | awk '{$1=$1;print}' | \
 /usr/bin/sort -n -k1 > $SCANDIR/$IP
 
 DIFF=`/usr/bin/comm -23 $SCANDIR/$IP $SCANDIR/$IP.base`
